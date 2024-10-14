@@ -1,0 +1,45 @@
+[package]
+name = "zero2prod"
+version = "0.1.0"
+authors = ["Wyatt <zhaoyuz@outlook.com>"]
+edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "zero2prod"
+
+[dependencies]
+actix-web = "4.9.0"
+config = "0.14.0"
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.40.0", features = ["macros", "rt-multi-thread"] }
+chrono = { version = "0.4.38", default-features = false, features = ["clock"] }
+tracing = { version = "0.1.40", features = ["log"] }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+tracing-bunyan-formatter = "0.3.9"
+tracing-log = "0.2.0"
+secrecy = { version = "0.10.3", features = ["serde"] }
+tracing-actix-web = "0.7.13"
+
+[dependencies.sqlx]
+version = "0.8.2"
+default-features = false
+features = [
+    "runtime-tokio-rustls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+    "migrate",
+]
+
+[dependencies.uuid]
+version = "1.10.0"
+features = ["v4", "fast-rng", "macro-diagnostics"]
+
+[dev-dependencies]
+reqwest = "0.12.8"
+rstest = "0.23.0"
