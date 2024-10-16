@@ -1,5 +1,4 @@
 use rstest::*;
-use secrecy::ExposeSecret;
 use sqlx::PgPool;
 use std::net::TcpListener;
 use zero2prod::telemetry::{get_subscriber, init_subscriber};
@@ -32,7 +31,7 @@ async fn test_app(configurations: &Settings) -> TestApp {
     let port = listener.local_addr().unwrap().port();
     let address = format!("http://127.0.0.1:{port}");
 
-    let db_pool = PgPool::connect(&configurations.database.connection_string().expose_secret())
+    let db_pool = PgPool::connect_with(configurations.database.pg_connection())
         .await
         .expect("Failed to connect to Postgres.");
 

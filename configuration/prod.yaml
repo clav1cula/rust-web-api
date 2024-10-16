@@ -1,0 +1,5 @@
+application:
+  host: 0.0.0.0
+
+database:
+  host: 172.17.0.2
