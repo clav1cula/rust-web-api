@@ -93,6 +93,9 @@ async fn subscribe_200(#[future] test_app: TestApp) {
 #[case("name=Arya%20Stark", "missing the email")]
 #[case("email=arya%40gmail.com", "missing the name")]
 #[case("", "missing both name and email")]
+#[case("name=&email=arya%40gmail.com", "empty name")]
+#[case("name=Arya%20Stark&email=", "empty email")]
+#[case("name=Arya%20Stark&email=definitely-not-an-email", "invalid email")]
 #[tokio::test]
 async fn subscribe_400_rt(
     #[future] test_app: TestApp,
