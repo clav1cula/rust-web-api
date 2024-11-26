@@ -25,6 +25,7 @@ secrecy = { version = "0.10.3", features = ["serde"] }
 tracing-actix-web = "0.7.13"
 unicode-segmentation = "1.12.0"
 validator = "0.16"
+rand = { version = "0.8.5", features = ["std_rng"] }
 
 [dependencies.sqlx]
 version = "0.8.2"
@@ -38,6 +39,11 @@ features = [
     "migrate",
 ]
 
+[dependencies.reqwest]
+version = "0.12.8"
+default-features = false
+features = ["json", "rustls-tls"]
+
 [dependencies.uuid]
 version = "1.10.0"
 features = ["v4", "fast-rng", "macro-diagnostics"]
@@ -45,6 +51,8 @@ features = ["v4", "fast-rng", "macro-diagnostics"]
 [dev-dependencies]
 claims = "0.7.1"
 fake = "2.10.0"
+linkify = "0.10.0"
 proptest = "1.5.0"
-reqwest = "0.12.8"
 rstest = "0.23.0"
+serde_json = "1.0.133"
+wiremock = "0.6.2"

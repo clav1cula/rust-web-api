@@ -1,5 +1,10 @@
 application:
   host: 0.0.0.0
+  base_url: "http://127.0.0.1"
 
 database:
   host: 172.17.0.2
+
+email_client:
+  base_url: "https://graph.microsoft.com"
+  sender_email: "zhaoyuz@outlook.com"
