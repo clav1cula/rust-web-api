@@ -59,7 +59,7 @@ pub async fn create_and_send_confirmation_email(
         confirmation_link
     );
     email_client
-        .create_email(new_subscriber.email, "Welcome!", &email_content)
+        .create_email(&new_subscriber.email, "Welcome!", &email_content)
         .await
 }
 
